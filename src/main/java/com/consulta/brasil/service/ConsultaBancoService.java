@@ -32,4 +32,21 @@ public class ConsultaBancoService {
         }
     }
 
+     /**
+     * Consulta api banco by code
+     * 
+     * @param apiConsulta
+     * @return
+     * @throws Exception
+     */
+    public ResponseEntity<BancoDTO> consultaAPIByCode(final Integer code, final String apiConsulta) throws Exception {
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<BancoDTO> response = restTemplate.getForEntity(apiConsulta + code, BancoDTO.class);
+           return ResponseEntity.ok(response.getBody());
+        } catch (final Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }
