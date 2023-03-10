@@ -1,33 +1,32 @@
 package com.consulta.brasil.service;
 
-import org.json.simple.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.consulta.brasil.model.BancoDTO;
+
 /**
- * The component cnpj service
+ * The component banco service
  * 
  * @author Tiago Silva
  * @date 10 de mar. de 2023
  */
 @Service
-public class ConsultaCNPJService {
-
-    /**
-     * Consulta api cnpj
+public class ConsultaBancoService {
+    
+     /**
+     * Consulta api banco
      * 
-     * @param digito
      * @param apiConsulta
      * @return
      * @throws Exception
      */
-    public ResponseEntity<JSONObject> consultaAPI(final String cnpj, final String apiConsulta) throws Exception {
+    public ResponseEntity<BancoDTO[]> consultaAPI(final String apiConsulta) throws Exception {
         try {
             RestTemplate restTemplate = new RestTemplate();
-            String api = apiConsulta + cnpj;
-            ResponseEntity<JSONObject> response = restTemplate.getForEntity(api, JSONObject.class);
-            return ResponseEntity.ok(response.getBody());
+            ResponseEntity<BancoDTO[]> response = restTemplate.getForEntity(apiConsulta, BancoDTO[].class);
+           return ResponseEntity.ok(response.getBody());
         } catch (final Exception e) {
             throw new Exception(e.getMessage());
         }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.consulta.brasil.service.ConsultaDDDService;
 
 /**
- * The class teste controller
+ * The consulta ddd
  * 
  * @author Tiago Silva
  * @date 10 de mar. de 2023

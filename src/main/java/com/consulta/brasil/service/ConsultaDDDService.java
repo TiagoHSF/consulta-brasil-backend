@@ -6,6 +6,12 @@ import org.springframework.web.client.RestTemplate;
 
 import com.consulta.brasil.model.ConsultaDDDDTO;
 
+/**
+ * The component ddd service
+ * 
+ * @author Tiago Silva
+ * @date 10 de mar. de 2023
+ */
 @Service
 public class ConsultaDDDService {
 

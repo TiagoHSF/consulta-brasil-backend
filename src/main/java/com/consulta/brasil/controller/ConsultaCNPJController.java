@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.consulta.brasil.service.ConsultaCNPJService;
 
 /**
- * The class teste controller
+ * The consulta cnpj 
  * 
  * @author Tiago Silva
  * @date 10 de mar. de 2023
