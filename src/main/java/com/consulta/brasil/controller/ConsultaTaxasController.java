@@ -3,6 +3,7 @@ package com.consulta.brasil.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,23 @@ public class ConsultaTaxasController {
     public @ResponseBody ResponseEntity<?> consultaTaxas() throws Exception {
         try {
             final var api = this.consultaTaxasService.consultaAPI(apiConsulta);
+            return ResponseEntity.ok(api);
+        } catch (final Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    /**
+     * Consulta taxas
+     * 
+     * @return
+     */
+    @GetMapping("listar/{sigla}")
+    public @ResponseBody ResponseEntity<?> consultaTaxas(
+        @PathVariable(name = "sigla", required = true) final String sigla
+    ) throws Exception {
+        try {
+            final var api = this.consultaTaxasService.consultaAPIBySigla(sigla, apiConsulta);
             return ResponseEntity.ok(api);
         } catch (final Exception e) {
             throw new Exception(e.getMessage());

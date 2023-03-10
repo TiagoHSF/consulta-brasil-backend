@@ -25,4 +25,20 @@ public class ConsultaTaxasService {
         }
     }
 
+     /**
+     * Consulta api taxas by sigla
+     * @param apiConsulta
+     * @return
+     * @throws Exception
+     */
+    public ResponseEntity<TaxaDTO> consultaAPIBySigla(final String sigla, final String apiConsulta) throws Exception{
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<TaxaDTO> response = restTemplate.getForEntity(apiConsulta + sigla, TaxaDTO.class);
+           return ResponseEntity.ok(response.getBody());
+        } catch (final Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }
